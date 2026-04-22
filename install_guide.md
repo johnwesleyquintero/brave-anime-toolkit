@@ -6,9 +6,11 @@
 3. Toggle OFF "Sync" and "Usage Stats" for sovereignty
 
 ## Step 2: Import Preferences (Optional)
-1. Go to `brave://settings/importData`
-2. Select "Import from JSON" → paste `profile_prefs.json` content
-3. Confirm site overrides are applied
+1. Close Brave completely.
+2. Open PowerShell in this folder and run:
+   ```powershell
+   powershell -ExecutionPolicy Bypass -File .\install.ps1
+   ```
 
 ## Step 3: Install Userscript
 ### Option A: Tampermonkey (Recommended)

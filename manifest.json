@@ -6,7 +6,7 @@
   "permissions": ["scripting"],
   "host_permissions": [
     "*://aniwave.to/*",
-    "*://gogoanime*.net/*",
+    "*://*.gogoanime3.net/*",
     "*://animeheaven.eu/*",
     "*://*.hidive.com/*",
     "*://*.crunchyroll.com/*"
@@ -15,7 +15,7 @@
     {
       "matches": [
         "*://aniwave.to/*",
-        "*://gogoanime*.net/*",
+        "*://*.gogoanime3.net/*",
         "*://animeheaven.eu/*",
         "*://*.hidive.com/*",
         "*://*.crunchyroll.com/*"

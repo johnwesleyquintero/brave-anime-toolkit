@@ -15,7 +15,7 @@ Function Set-BravePreference {
     $PreferencesFilePath = Join-Path $ProfilePath "Preferences"
 
     if (-not (Test-Path $PreferencesFilePath)) {
-        Write-Warning "Preferences file not found for profile 	'$ProfileName	'. Ensure the profile exists and Brave has been launched at least once."
+        Write-Warning "Preferences file not found at '$PreferencesFilePath'. Ensure the profile '$ProfileName' exists."
         return
     }
 
@@ -23,7 +23,7 @@ Function Set-BravePreference {
     $content.$PrefKey = $PrefValue
 
     $content | ConvertTo-Json -Depth 100 | Set-Content $PreferencesFilePath -Force
-    Write-Host "Set preference 	'$PrefKey	' to 	'$PrefValue	' for profile 	'$ProfileName	'."
+    Write-Host "Set preference '$PrefKey' for profile '$ProfileName'."
 }
 
 # Step 1: Create Dedicated Profile (Manual Step with Guidance)
@@ -68,10 +68,17 @@ Write-Host "`nStep 3: Installing Userscript`n"
 $userscriptPath = Join-Path $PSScriptRoot "anime-brave-fix.user.js"
 
 # Determine Brave installation path (common locations)
-$braveInstallPath = "$env:LOCALAPPDATA\BraveSoftware\Brave-Browser\Application"
-$braveVersionDir = Get-ChildItem -Path $braveInstallPath -Directory | Where-Object {$_.Name -match '^\d+\.\d+\.\d+\.\d+$'} | Select-Object -Last 1
+$possiblePaths = @(
+    "$env:LOCALAPPDATA\BraveSoftware\Brave-Browser\Application",
+    "$env:ProgramFiles\BraveSoftware\Brave-Browser\Application",
+    "${env:ProgramFiles(x86)}\BraveSoftware\Brave-Browser\Application"
+)
 
-if ($braveVersionDir) {
+$braveInstallPath = $possiblePaths | Where-Object { Test-Path $_ } | Select-Object -First 1
+
+if ($braveInstallPath) {
+    $braveVersionDir = Get-ChildItem -Path $braveInstallPath -Directory | Where-Object {$_.Name -match '^\d+\.\d+\.\d+\.\d+$'} | Select-Object -Last 1
+    
     $extensionsDir = Join-Path $braveVersionDir.FullName "resources\brave_extension\user_data\Default\Extensions"
     # This part requires more advanced interaction or Brave API to load unpacked extension programmatically
     # For now, guide the user to manually load it.

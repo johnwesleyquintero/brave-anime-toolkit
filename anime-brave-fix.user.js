@@ -6,7 +6,7 @@
 // @author       John Wesley Quintero (WesAI)
 // @license      MIT
 // @match        *://aniwave.to/*
-// @match        *://gogoanime*.net/*
+// @match        *://*.gogoanime3.net/*
 // @match        *://animeheaven.eu/*
 // @match        *://*.hidive.com/*
 // @match        *://*.crunchyroll.com/*
