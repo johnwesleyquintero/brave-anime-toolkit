@@ -1,0 +1,27 @@
+{
+  "profile": {
+    "name": "Anime",
+    "icon": "🎌",
+    "privacy": {
+      "block_fingerprinting": false,
+      "block_third_party_cookies": true,
+      "allow_first_party_cookies": true,
+      "shields_default": "aggressive"
+    },
+    "content_settings": {
+      "autoplay": "allow",
+      "javascript": "allow",
+      "plugins": "allow"
+    },
+    "site_overrides": {
+      "aniwave.to": { "shields": "aggressive", "fingerprinting": "allow" },
+      "gogoanime3.net": { "shields": "standard", "fingerprinting": "allow" },
+      "animeheaven.eu": { "shields": "standard", "cookies": "allow_first_party" },
+      "tubitv.com": { "shields": "standard" },
+      "retrocrush.tv": { "shields": "standard" }
+    },
+    "hardware_acceleration": true,
+    "telemetry": false,
+    "sync_enabled": false
+  }
+}

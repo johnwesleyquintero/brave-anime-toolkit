@@ -1,0 +1,27 @@
+{
+  "manifest_version": 3,
+  "name": "Brave Anime Site Fixer",
+  "version": "1.0.0",
+  "description": "Auto-apply Brave compatibility fixes for anime streaming sites",
+  "permissions": ["scripting"],
+  "host_permissions": [
+    "*://aniwave.to/*",
+    "*://gogoanime*.net/*",
+    "*://animeheaven.eu/*",
+    "*://*.hidive.com/*",
+    "*://*.crunchyroll.com/*"
+  ],
+  "content_scripts": [
+    {
+      "matches": [
+        "*://aniwave.to/*",
+        "*://gogoanime*.net/*",
+        "*://animeheaven.eu/*",
+        "*://*.hidive.com/*",
+        "*://*.crunchyroll.com/*"
+      ],
+      "js": ["anime-brave-fix.user.js"],
+      "run_at": "document_start"
+    }
+  ]
+}
